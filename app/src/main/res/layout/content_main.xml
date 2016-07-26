@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.atloginbutton.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <RelativeLayout
+        android:id="@+id/rl_change"
+        android:layout_width="match_parent"
+        android:background="@color/colorAccent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_weight="1">
+
+        <customview.ATLoginButton
+            android:id="@+id/atb_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_weight="1">
+
+        <customview.ATLoginButton
+            android:id="@+id/atb_3"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:button_color="@android:color/white"
+            app:button_normal_color="@android:color/transparent"
+            app:button_normal_stroke_color="#50ffffff"
+            app:button_normal_stroke_width="1dp"
+            app:circle_loading_color="@android:color/black"
+            app:circle_loading_width="1dp"
+            app:failed_button_color="@color/colorW"
+            app:failed_text="登录失败!"
+            app:failed_text_color="@android:color/holo_orange_dark"
+            app:login_text="登录"
+            app:text_color="#90000000"
+            app:text_normal_color="@android:color/white"
+            app:text_size="16sp" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_weight="1">
+
+        <customview.ATLoginButton
+            android:id="@+id/atb_2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            app:button_color="@android:color/holo_purple"
+            app:circle_loading_color="@android:color/holo_red_dark"
+            app:circle_loading_width="1dp"
+            app:failed_button_color="@android:color/holo_blue_light"
+            app:failed_text="Login Failed!"
+            app:failed_text_color="#90000000"
+            app:login_text="Sign In"
+            app:text_color="@color/colorW"
+            app:text_size="15sp" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

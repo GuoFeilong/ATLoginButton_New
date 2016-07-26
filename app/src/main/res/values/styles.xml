@@ -1,0 +1,42 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="def_button_style">
+        <item name="button_color">@android:color/holo_green_light</item>
+        <item name="text_color">@color/colorW</item>
+        <item name="text_size">14sp</item>
+        <item name="circle_loading_width">1dp</item>
+        <item name="circle_loading_color">@android:color/darker_gray</item>
+        <item name="failed_button_color">@android:color/holo_red_light</item>
+        <item name="login_text">登录</item>
+        <item name="failed_text">失败请重试!</item>
+    </style>
+
+    <style name="def_card_item_style">
+        <item name="cardColor">@color/colorW</item>
+        <item name="cardStrockColor">@color/strackColor</item>
+        <item name="textHighLightColor">@color/textHighLightColor</item>
+        <item name="textNormalColor">@color/textNormalColor</item>
+        <item name="triangleColor">@color/triangleColor</item>
+        <item name="triangleFlagColor">@color/triangleFlagColor</item>
+        <item name="dashLineColor">@color/dashLineColor</item>
+        <item name="cardRoundSize">2dp</item>
+        <item name="strockSize">2px</item>
+    </style>
+</resources>

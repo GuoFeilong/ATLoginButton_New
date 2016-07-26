@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ATLoginButton">
+        <attr name="button_color" format="color" />
+        <attr name="text_color" format="color" />
+        <attr name="circle_loading_color" format="color" />
+        <attr name="failed_button_color" format="color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="circle_loading_width" format="dimension" />
+        <attr name="login_text" format="string" />
+        <attr name="failed_text" format="string" />
+        <attr name="failed_text_color" format="color" />
+        <attr name="button_normal_color" format="color" />
+        <attr name="button_normal_stroke_color" format="color" />
+        <attr name="text_normal_color" format="color" />
+        <attr name="button_normal_stroke_width" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ATCardItemView">
+        <attr name="cardColor" format="color" />
+        <attr name="cardStrockColor" format="color" />
+        <attr name="textHighLightColor" format="color" />
+        <attr name="textNormalColor" format="color" />
+        <attr name="triangleColor" format="color" />
+        <attr name="triangleFlagColor" format="color" />
+        <attr name="dashLineColor" format="color" />
+        <attr name="cardRoundSize" format="dimension" />
+        <attr name="strockSize" format="dimension" />
+    </declare-styleable>
+</resources>
