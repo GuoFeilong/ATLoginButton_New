@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import customview.ATLoginButton;
+import customview.ATScrollDeleteTouchView;
 
 public class MainActivity extends AppCompatActivity {
     private ATLoginButton mATLoginButton1;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         mATLoginButton1 = (ATLoginButton) findViewById(R.id.atb_1);
-        mATLoginButton2 = (ATLoginButton) findViewById(R.id.atb_2);
+//        mATLoginButton2 = (ATLoginButton) findViewById(R.id.atb_2);
         mATLoginButton3 = (ATLoginButton) findViewById(R.id.atb_3);
 //        addListener2Button(mATLoginButton1, true);
 //        addListener2Button(mATLoginButton2, false);
@@ -70,6 +71,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        ATScrollDeleteTouchView atScrollDeleteView = (ATScrollDeleteTouchView) findViewById(R.id.deleteScroll);
+        atScrollDeleteView.setScrollDeleteDesc("亚洲旅游");
+        atScrollDeleteView.setScrollDeleteListener(new ATScrollDeleteTouchView.OnScrollDeleteListener() {
+            @Override
+            public void deleteAction() {
+                Toast.makeText(MainActivity.this, "-->>>action删除", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
     }
 
     private void addListener2Button(final ATLoginButton atLoginButton, final boolean loaginStatus) {

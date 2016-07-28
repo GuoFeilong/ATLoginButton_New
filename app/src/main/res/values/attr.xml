@@ -27,4 +27,17 @@
         <attr name="cardRoundSize" format="dimension" />
         <attr name="strockSize" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="ATScrollDeleteView">
+        <attr name="top_layer_color" format="color"/>
+        <attr name="top_layer_icon" format="reference"/>
+        <attr name="top_layer_desc" format="string"/>
+        <attr name="top_layer_desc_color" format="color"/>
+        <attr name="top_layer_desc_size" format="integer"/>
+        <attr name="top_layer_icon_margin_desc" format="dimension"/>
+        <attr name="top_layer_icon_margin_left" format="dimension"/>
+        <attr name="under_layer_color" format="color"/>
+        <attr name="under_layer_icon" format="reference"/>
+    </declare-styleable>
+
 </resources>

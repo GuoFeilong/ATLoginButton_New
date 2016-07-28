@@ -62,20 +62,31 @@
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:layout_weight="1">
 
-        <customview.ATLoginButton
-            android:id="@+id/atb_2"
+        <!--<customview.ATLoginButton-->
+            <!--android:id="@+id/atb_2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--app:button_color="@android:color/holo_purple"-->
+            <!--app:circle_loading_color="@android:color/holo_red_dark"-->
+            <!--app:circle_loading_width="1dp"-->
+            <!--app:failed_button_color="@android:color/holo_blue_light"-->
+            <!--app:failed_text="Login Failed!"-->
+            <!--app:failed_text_color="#90000000"-->
+            <!--app:login_text="Sign In"-->
+            <!--app:text_color="@color/colorW"-->
+            <!--app:text_size="15sp" />-->
+
+        <customview.ATScrollDeleteTouchView
+            android:id="@+id/deleteScroll"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="65dp"
             android:layout_centerInParent="true"
-            app:button_color="@android:color/holo_purple"
-            app:circle_loading_color="@android:color/holo_red_dark"
-            app:circle_loading_width="1dp"
-            app:failed_button_color="@android:color/holo_blue_light"
-            app:failed_text="Login Failed!"
-            app:failed_text_color="#90000000"
-            app:login_text="Sign In"
-            app:text_color="@color/colorW"
-            app:text_size="15sp" />
+            app:top_layer_desc_size="12"
+            app:top_layer_icon_margin_desc="12dp">
+
+        </customview.ATScrollDeleteTouchView>
+
 
 
     </RelativeLayout>
