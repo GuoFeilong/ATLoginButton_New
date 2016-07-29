@@ -24,4 +24,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
     compile 'com.android.support:design:24.0.0-alpha1'
+    compile 'com.orhanobut:logger:1.15'
 }

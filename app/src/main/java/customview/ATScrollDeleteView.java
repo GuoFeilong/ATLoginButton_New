@@ -186,7 +186,6 @@ public class ATScrollDeleteView extends RelativeLayout {
         topDescView = new TextView(getContext());
         topDescView.setTextSize(TypedValue.COMPLEX_UNIT_SP, topLayerDescSize);
         topDescView.setTextColor(topLayerDescColor);
-        //  TODO: 16/7/28 提供方法给外界调用
         topDescView.setText(topLayerDesc);
         topDescView.setCompoundDrawablePadding(topLayerIconMarginDesc);
         LinearLayout.LayoutParams descLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);

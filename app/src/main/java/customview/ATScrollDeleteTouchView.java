@@ -13,6 +13,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
@@ -21,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.atloginbutton.R;
+import com.orhanobut.logger.Logger;
 
 /**
  * Created by jsion on 16/7/27.
@@ -47,6 +49,10 @@ public class ATScrollDeleteTouchView extends RelativeLayout {
     private int viewState;
     private String desc;
     private OnScrollDeleteListener scrollDeleteListener;
+    private int downX;
+    private LayoutParams topLayerParams;
+    private LinearLayout.LayoutParams descLp;
+    private int iconOffX;
 
     public ATScrollDeleteTouchView(Context context) {
         this(context, null);
@@ -102,6 +108,9 @@ public class ATScrollDeleteTouchView extends RelativeLayout {
         viewHeight = h;
         viewWidth = w;
         viewState = ViewState.FOLD;
+
+
+        iconOffX = (int) (viewWidth * TOUCH_SCROLL_SCALE - calculateOffSideDistance());
         addUnderIconView(w);
         addTopLayerView();
         calculateOffSideDistance();
@@ -131,6 +140,59 @@ public class ATScrollDeleteTouchView extends RelativeLayout {
                     return;
                 }
                 viewFoldOrNot();
+            }
+        });
+
+        topLayerParent.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        Logger.e("----DOWN--->>>>topLayerParams---->>>>" + topLayerParams.leftMargin + "---->>>topLayerParams.rightMargin-->>" + topLayerParams.rightMargin);
+                        downX = (int) event.getX();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        int dX = (int) (event.getX() - downX);
+                        if (topLayerParams.rightMargin <= viewWidth * TOUCH_SCROLL_SCALE) {
+                            if (dX < 0) {
+                                Logger.e("向左滑动---->>downX" + downX + "---->>dX=" + dX);
+                                topLayerParams.rightMargin += -dX / 2;
+                                topLayerParams.leftMargin += dX / 2;
+
+                                descLp.leftMargin += -dX / 2;
+                            }
+
+                            if (topLayerParams.rightMargin > 0 && dX > 0) {
+                                Logger.e("向右滑动---->>downX" + downX + "---->>dX=" + dX);
+                                topLayerParams.leftMargin += dX / 2;
+                                topLayerParams.rightMargin += -dX / 2;
+
+                                descLp.leftMargin += -dX / 2;
+
+                            }
+                            topDescView.setLayoutParams(descLp);
+                            topLayerParent.setLayoutParams(topLayerParams);
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        Logger.e("----UP---->>>>topLayerParams---->>>>" + topLayerParams.leftMargin + "---->>>topLayerParams.rightMargin-->>" + topLayerParams.rightMargin);
+                        int half = (int) (viewWidth * TOUCH_SCROLL_SCALE / 2);
+                        if (topLayerParams.rightMargin > viewWidth * TOUCH_SCROLL_SCALE) {
+                            topLayerParams.rightMargin = (int) (viewWidth * TOUCH_SCROLL_SCALE);
+                        }
+
+                        if (topLayerParams.rightMargin >= half) {
+                            topLayerParams.rightMargin = (int) (viewWidth * TOUCH_SCROLL_SCALE);
+                            topLayerParams.leftMargin = -(int) (viewWidth * TOUCH_SCROLL_SCALE);
+                        } else {
+                            topLayerParams.rightMargin = 0;
+                            topLayerParams.leftMargin = 0;
+                        }
+                        topLayerParent.setLayoutParams(topLayerParams);
+
+                        break;
+                }
+                return false;
             }
         });
     }
@@ -180,16 +242,15 @@ public class ATScrollDeleteTouchView extends RelativeLayout {
 
     private void addTopLayerView() {
         topLayerParent = new LinearLayout(getContext());
-        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        topLayerParent.setLayoutParams(params);
+        topLayerParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        topLayerParent.setLayoutParams(topLayerParams);
         topLayerParent.setBackgroundColor(topLayerColor);
         topDescView = new TextView(getContext());
         topDescView.setTextSize(TypedValue.COMPLEX_UNIT_SP, topLayerDescSize);
         topDescView.setTextColor(topLayerDescColor);
-        //  TODO: 16/7/28 提供方法给外界调用
         topDescView.setText(topLayerDesc);
         topDescView.setCompoundDrawablePadding(topLayerIconMarginDesc);
-        LinearLayout.LayoutParams descLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        descLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         descLp.gravity = Gravity.CENTER_VERTICAL;
         descLp.leftMargin = topLayerIconMarginLeft;
         topDescView.setGravity(Gravity.CENTER);
