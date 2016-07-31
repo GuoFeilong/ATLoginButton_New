@@ -13,12 +13,15 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import customview.ATLoginButton;
+import customview.ATProgressView;
 import customview.ATScrollDeleteTouchView;
 
 public class MainActivity extends AppCompatActivity {
     private ATLoginButton mATLoginButton1;
     private ATLoginButton mATLoginButton2;
     private ATLoginButton mATLoginButton3;
+
+    private ATProgressView mATProgressView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,21 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        mATProgressView = (ATProgressView) findViewById(R.id.progressView);
+        mATProgressView.setCountdownTime(10);
+        mATProgressView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mATProgressView.startCountdown(new ATProgressView.OnCountDownFinishListener() {
+                    @Override
+                    public void countDownFinished() {
+                        Toast.makeText(MainActivity.this, "倒计时结束了--->该UI处理界面逻辑了", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
+
         mATLoginButton1 = (ATLoginButton) findViewById(R.id.atb_1);
 //        mATLoginButton2 = (ATLoginButton) findViewById(R.id.atb_2);
         mATLoginButton3 = (ATLoginButton) findViewById(R.id.atb_3);

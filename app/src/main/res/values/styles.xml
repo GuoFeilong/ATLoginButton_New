@@ -51,4 +51,20 @@
         <item name="under_layer_icon">@mipmap/icon_scroll_delete_action</item>
     </style>
 
+    <style name="def_progress_style">
+        <item name="outer_layer_solide_color">@color/colorW</item>
+        <item name="outer_layer_stroke_color">#90F76E6B</item>
+        <item name="outer_layer_stroke_width">2dp</item>
+        <item name="midlle_layer_bg_color">@color/strackColor</item>
+        <item name="midlle_layer_progress_color">#F76E6B</item>
+        <item name="midlle_layer_progress_width">4dp</item>
+        <item name="midlle_layer_small_circle_solide_color">@color/colorW</item>
+        <item name="midlle_layer_small_circle_stroke_color">#F76E6B</item>
+        <item name="midlle_layer_small_circle_size">9dp</item>
+        <item name="midlle_layer_small_circle_stroke_width">4dp</item>
+        <item name="shadow_layer_color">#90F76E6B</item>
+        <item name="shadow_layer_inner_color">@color/colorW</item>
+        <item name="inner_text_size">50sp</item>
+        <item name="inner_text_color">#F76E6B</item>
+    </style>
 </resources>

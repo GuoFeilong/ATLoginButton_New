@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.atloginbutton.MainActivity"
-    tools:showIn="@layout/activity_main">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              app:layout_behavior="@string/appbar_scrolling_view_behavior"
+              tools:context="com.atloginbutton.MainActivity"
+              tools:showIn="@layout/activity_main">
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/rl_change"
         android:layout_width="match_parent"
-        android:background="@color/colorAccent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/colorAccent"
+        android:visibility="gone">
 
         <customview.ATLoginButton
             android:id="@+id/atb_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"/>
 
 
     </RelativeLayout>
 
     <RelativeLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:visibility="gone">
 
         <customview.ATLoginButton
             android:id="@+id/atb_3"
@@ -52,33 +52,34 @@
             app:login_text="登录"
             app:text_color="#90000000"
             app:text_normal_color="@android:color/white"
-            app:text_size="16sp" />
+            app:text_size="16sp"/>
 
 
     </RelativeLayout>
 
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <!--<customview.ATLoginButton-->
-            <!--android:id="@+id/atb_2"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="60dp"-->
-            <!--android:layout_centerInParent="true"-->
-            <!--app:button_color="@android:color/holo_purple"-->
-            <!--app:circle_loading_color="@android:color/holo_red_dark"-->
-            <!--app:circle_loading_width="1dp"-->
-            <!--app:failed_button_color="@android:color/holo_blue_light"-->
-            <!--app:failed_text="Login Failed!"-->
-            <!--app:failed_text_color="#90000000"-->
-            <!--app:login_text="Sign In"-->
-            <!--app:text_color="@color/colorW"-->
-            <!--app:text_size="15sp" />-->
+        <!--android:id="@+id/atb_2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--app:button_color="@android:color/holo_purple"-->
+        <!--app:circle_loading_color="@android:color/holo_red_dark"-->
+        <!--app:circle_loading_width="1dp"-->
+        <!--app:failed_button_color="@android:color/holo_blue_light"-->
+        <!--app:failed_text="Login Failed!"-->
+        <!--app:failed_text_color="#90000000"-->
+        <!--app:login_text="Sign In"-->
+        <!--app:text_color="@color/colorW"-->
+        <!--app:text_size="15sp" />-->
 
         <customview.ATScrollDeleteTouchView
             android:id="@+id/deleteScroll"
@@ -90,6 +91,7 @@
             app:top_layer_icon_margin_desc="12dp">
 
         </customview.ATScrollDeleteTouchView>
+
         <customview.ATScrollDeleteTouchView
             android:id="@+id/deleteScroll_1"
             android:layout_width="match_parent"
@@ -97,11 +99,12 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="2dp"
             app:top_layer_color="@android:color/holo_green_light"
-            app:under_layer_color="@android:color/holo_purple"
             app:top_layer_desc_size="12"
-            app:top_layer_icon_margin_desc="12dp">
+            app:top_layer_icon_margin_desc="12dp"
+            app:under_layer_color="@android:color/holo_purple">
 
         </customview.ATScrollDeleteTouchView>
+
         <customview.ATScrollDeleteTouchView
             android:id="@+id/deleteScroll_4"
             android:layout_width="match_parent"
@@ -109,11 +112,12 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="2dp"
             app:top_layer_color="@android:color/holo_blue_bright"
-            app:under_layer_color="@android:color/holo_green_light"
             app:top_layer_desc_size="12"
-            app:top_layer_icon_margin_desc="12dp">
+            app:top_layer_icon_margin_desc="12dp"
+            app:under_layer_color="@android:color/holo_green_light">
 
         </customview.ATScrollDeleteTouchView>
+
         <customview.ATScrollDeleteTouchView
             android:id="@+id/deleteScroll_2"
             android:layout_width="match_parent"
@@ -121,11 +125,12 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="2dp"
             app:top_layer_color="@android:color/holo_orange_light"
-            app:under_layer_color="@color/colorAccent"
             app:top_layer_desc_size="12"
-            app:top_layer_icon_margin_desc="12dp">
+            app:top_layer_icon_margin_desc="12dp"
+            app:under_layer_color="@color/colorAccent">
 
         </customview.ATScrollDeleteTouchView>
+
         <customview.ATScrollDeleteTouchView
             android:id="@+id/deleteScroll_3"
             android:layout_width="match_parent"
@@ -133,24 +138,22 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="2dp"
             app:top_layer_color="@android:color/holo_purple"
-            app:under_layer_color="@android:color/holo_red_light"
             app:top_layer_desc_size="12"
-            app:top_layer_icon_margin_desc="12dp">
+            app:top_layer_icon_margin_desc="12dp"
+            app:under_layer_color="@android:color/holo_red_light">
 
         </customview.ATScrollDeleteTouchView>
 
 
-        <customview.ATProgressView
-            android:layout_width="100dp"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="100dp"
-
-            />
-
-
-
     </LinearLayout>
 
+    <customview.ATProgressView
+
+        android:id="@+id/progressView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+
+        />
 
 </LinearLayout>
