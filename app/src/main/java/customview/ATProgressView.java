@@ -290,6 +290,7 @@ public class ATProgressView extends View {
         canvas.drawCircle(xiaoYuanX, xiaoYuanY, (smallCircleSize - smallCircleStrokeWidth) / 2, smallCircleInnerPaint);
     }
 
+
     /**
      * 绘制外层的大圆圈和描边
      *
@@ -393,6 +394,8 @@ public class ATProgressView extends View {
                         if (countdownTime < 0) {
                             mTextDescPaint.setTextSize(innerTextSize / 2);
                             progressDesc = "时间到";
+                            smallCirclePaint.setColor(getResources().getColor(android.R.color.transparent));
+                            smallCircleInnerPaint.setColor(getResources().getColor(android.R.color.transparent));
                             onCompleted();
                             return;
                         } else {
