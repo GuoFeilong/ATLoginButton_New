@@ -14,7 +14,8 @@ import android.widget.Toast;
 
 import customview.ATLoginButton;
 import customview.ATProgressView;
-import customview.ATScrollDeleteTouchView;
+import customview.ATScrollDeleteView;
+
 
 public class MainActivity extends AppCompatActivity {
     private ATLoginButton mATLoginButton1;
@@ -90,44 +91,26 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ATScrollDeleteTouchView atScrollDeleteView = (ATScrollDeleteTouchView) findViewById(R.id.deleteScroll);
-        atScrollDeleteView.setScrollDeleteDesc("陈冠希");
-        atScrollDeleteView.setScrollDeleteListener(new ATScrollDeleteTouchView.OnScrollDeleteListener() {
+        ATScrollDeleteView atScrollDeleteView = (ATScrollDeleteView) findViewById(R.id.deleteScroll);
+        atScrollDeleteView.setScrollDeleteDesc("陈冠希","阿娇");
+        atScrollDeleteView.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
             @Override
             public void deleteAction() {
                 Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();
             }
         });
-        ATScrollDeleteTouchView atScrollDeleteView1 = (ATScrollDeleteTouchView) findViewById(R.id.deleteScroll_1);
+        ATScrollDeleteView atScrollDeleteView1 = (ATScrollDeleteView) findViewById(R.id.deleteScroll_1);
         atScrollDeleteView1.setScrollDeleteDesc("张柏芝");
-        atScrollDeleteView1.setScrollDeleteListener(new ATScrollDeleteTouchView.OnScrollDeleteListener() {
+        atScrollDeleteView1.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
             @Override
             public void deleteAction() {
                 Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();
             }
         });
 
-        ATScrollDeleteTouchView atScrollDeleteView2 = (ATScrollDeleteTouchView) findViewById(R.id.deleteScroll_2);
-        atScrollDeleteView2.setScrollDeleteDesc("钟欣桐");
-        atScrollDeleteView2.setScrollDeleteListener(new ATScrollDeleteTouchView.OnScrollDeleteListener() {
-            @Override
-            public void deleteAction() {
-                Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        ATScrollDeleteTouchView atScrollDeleteView3 = (ATScrollDeleteTouchView) findViewById(R.id.deleteScroll_3);
-        atScrollDeleteView3.setScrollDeleteDesc("杨永晴");
-        atScrollDeleteView3.setScrollDeleteListener(new ATScrollDeleteTouchView.OnScrollDeleteListener() {
-            @Override
-            public void deleteAction() {
-                Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        ATScrollDeleteTouchView atScrollDeleteView4 = (ATScrollDeleteTouchView) findViewById(R.id.deleteScroll_4);
-        atScrollDeleteView4.setScrollDeleteDesc("陈思慧");
-        atScrollDeleteView4.setScrollDeleteListener(new ATScrollDeleteTouchView.OnScrollDeleteListener() {
+        ATScrollDeleteView atScrollDeleteView4 = (ATScrollDeleteView) findViewById(R.id.deleteScroll_4);
+        atScrollDeleteView4.setScrollDeleteDesc("陈思慧","陈冠希","阿娇");
+        atScrollDeleteView4.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
             @Override
             public void deleteAction() {
                 Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();

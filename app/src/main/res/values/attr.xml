@@ -34,6 +34,9 @@
         <attr name="top_layer_desc" format="string"/>
         <attr name="top_layer_desc_color" format="color"/>
         <attr name="top_layer_desc_size" format="integer"/>
+        <attr name="top_layer_desc_another_color" format="color"/>
+        <attr name="top_layer_desc_another_size" format="integer"/>
+        <attr name="top_layer_desc_margin" format="dimension"/>
         <attr name="top_layer_icon_margin_desc" format="dimension"/>
         <attr name="top_layer_icon_margin_left" format="dimension"/>
         <attr name="under_layer_color" format="color"/>

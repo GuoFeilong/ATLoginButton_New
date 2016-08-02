@@ -45,6 +45,9 @@
         <item name="top_layer_icon">@mipmap/icon_scroll_delete_ready</item>
         <item name="top_layer_desc">Edison</item>
         <item name="top_layer_desc_color">#90000000</item>
+        <item name="top_layer_desc_another_color">#666666</item>
+        <item name="top_layer_desc_another_size" >12</item>
+        <item name="top_layer_desc_margin" >10dp</item>
         <item name="top_layer_icon_margin_desc">12dp</item>
         <item name="top_layer_icon_margin_left">12dp</item>
         <item name="under_layer_color">@color/strackColor</item>

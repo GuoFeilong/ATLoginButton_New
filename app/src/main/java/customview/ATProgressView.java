@@ -34,9 +34,7 @@ public class ATProgressView extends View {
     private static final float MIDDLE_LAYER_LARGE_SCALE = 51 / 62.F;
     private static final float SHADOW_LAYER_LARGE_SCALE = 40 / 62.F;
     private static final float SMALL_CIRCLE_DEGREE_OFFSET = 0.7F;
-
     private static final int DEF_VIEW_SIZE = 250;
-    private static final float TEST_DEGREE = 70.F;
 
     private int outLayerSolideColor;
     private int outLayerStrokeColor;

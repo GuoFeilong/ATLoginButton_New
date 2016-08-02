@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -25,17 +26,14 @@ import com.atloginbutton.R;
 /**
  * Created by jsion on 16/7/27.
  */
-public class ATScrollDeleteView extends RelativeLayout {
+public class ATScrollDeleteViewBackUp extends RelativeLayout {
     private static final float TOUCH_SCROLL_SCALE = 1 / 5.F;
     private static final int ANIMATION_TIME = 300;
     private int topLayerColor;
     private int topLayerIcon;
     private String topLayerDesc;
     private int topLayerDescColor;
-    private int topLayerDescAnotherSize;
-    private int topLayerDescAnotherColor;
     private int topLayerDescSize;
-    private int topLayerDescMargin;
     private int topLayerIconMarginDesc;
     private int topLayerIconMarginLeft;
     private int underLayerColor;
@@ -45,22 +43,21 @@ public class ATScrollDeleteView extends RelativeLayout {
     private int viewHeight;
 
     private ImageView underIconView;
+    private TextView topDescView;
     private LinearLayout topLayerParent;
     private int viewState;
-    private String[] mDesc;
+    private String desc;
     private OnScrollDeleteListener scrollDeleteListener;
-    private LinearLayout descParent;
-    private ImageView topIconView;
 
-    public ATScrollDeleteView(Context context) {
+    public ATScrollDeleteViewBackUp(Context context) {
         this(context, null);
     }
 
-    public ATScrollDeleteView(Context context, AttributeSet attrs) {
+    public ATScrollDeleteViewBackUp(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ATScrollDeleteView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ATScrollDeleteViewBackUp(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ATScrollDeleteView, defStyleAttr, R.style.def_scroll_delete_style);
         int indexCount = typedArray.getIndexCount();
@@ -82,20 +79,11 @@ public class ATScrollDeleteView extends RelativeLayout {
                 case R.styleable.ATScrollDeleteView_top_layer_desc_size:
                     topLayerDescSize = typedArray.getInteger(attr, 0);
                     break;
-                case R.styleable.ATScrollDeleteView_top_layer_desc_another_color:
-                    topLayerDescAnotherColor = typedArray.getColor(attr, Color.BLACK);
-                    break;
-                case R.styleable.ATScrollDeleteView_top_layer_desc_another_size:
-                    topLayerDescAnotherSize = typedArray.getInteger(attr, 0);
-                    break;
                 case R.styleable.ATScrollDeleteView_top_layer_icon_margin_left:
                     topLayerIconMarginLeft = typedArray.getDimensionPixelOffset(attr, 0);
                     break;
                 case R.styleable.ATScrollDeleteView_top_layer_icon_margin_desc:
                     topLayerIconMarginDesc = typedArray.getDimensionPixelOffset(attr, 0);
-                    break;
-                case R.styleable.ATScrollDeleteView_top_layer_desc_margin:
-                    topLayerDescMargin = typedArray.getDimensionPixelOffset(attr, 0);
                     break;
                 case R.styleable.ATScrollDeleteView_under_layer_color:
                     underLayerColor = typedArray.getColor(attr, Color.BLACK);
@@ -130,7 +118,7 @@ public class ATScrollDeleteView extends RelativeLayout {
     }
 
     private void addViewListener() {
-        topIconView.setOnClickListener(new OnClickListener() {
+        topDescView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 viewFoldOrNot();
@@ -177,8 +165,8 @@ public class ATScrollDeleteView extends RelativeLayout {
         int topTextStartX = isShow ? 0 : (int) (viewWidth * TOUCH_SCROLL_SCALE - calculateOffSideDistance());
         int topTextoffSide = isShow ? (int) (viewWidth * TOUCH_SCROLL_SCALE - calculateOffSideDistance()) : 0;
 
-        descParent.setClickable(false);
-        ObjectAnimator topTextAnim = ObjectAnimator.ofFloat(descParent, "translationX", topTextStartX, topTextoffSide);
+        topDescView.setClickable(false);
+        ObjectAnimator topTextAnim = ObjectAnimator.ofFloat(topDescView, "translationX", topTextStartX, topTextoffSide);
         topTextAnim.setDuration(ANIMATION_TIME);
         topTextAnim.setInterpolator(new LinearInterpolator());
         topTextAnim.start();
@@ -186,41 +174,32 @@ public class ATScrollDeleteView extends RelativeLayout {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                descParent.setClickable(true);
+                topDescView.setClickable(true);
             }
         });
-
-
-        ObjectAnimator topIconViewAni = ObjectAnimator.ofFloat(topIconView, "translationX", topTextStartX, topTextoffSide);
-        topIconViewAni.setDuration(ANIMATION_TIME);
-        topIconViewAni.setInterpolator(new LinearInterpolator());
-        topIconViewAni.start();
-
     }
 
     private void addTopLayerView() {
         topLayerParent = new LinearLayout(getContext());
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-        params.gravity = Gravity.CENTER_VERTICAL;
+        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         topLayerParent.setLayoutParams(params);
         topLayerParent.setBackgroundColor(topLayerColor);
-
-        topIconView = new ImageView(getContext());
-        topIconView.setImageResource(topLayerIcon);
-        LinearLayout.LayoutParams topIconParam = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        topIconParam.gravity = Gravity.CENTER_VERTICAL;
-        topIconParam.leftMargin = topLayerIconMarginLeft;
-        topIconView.setLayoutParams(topIconParam);
-
-        descParent = new LinearLayout(getContext());
-        descParent.setOrientation(LinearLayout.VERTICAL);
-        LinearLayout.LayoutParams descParentParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        descParentParams.gravity = Gravity.CENTER_VERTICAL;
-        descParentParams.leftMargin = topLayerIconMarginDesc;
-        descParent.setLayoutParams(descParentParams);
-
-        topLayerParent.addView(topIconView);
-        topLayerParent.addView(descParent);
+        topDescView = new TextView(getContext());
+        topDescView.setTextSize(TypedValue.COMPLEX_UNIT_SP, topLayerDescSize);
+        topDescView.setTextColor(topLayerDescColor);
+        topDescView.setText(topLayerDesc);
+        topDescView.setCompoundDrawablePadding(topLayerIconMarginDesc);
+        LinearLayout.LayoutParams descLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        descLp.gravity = Gravity.CENTER_VERTICAL;
+        descLp.leftMargin = topLayerIconMarginLeft;
+        topDescView.setGravity(Gravity.CENTER);
+        topDescView.setLayoutParams(descLp);
+        Drawable topIconDrawable = getResources().getDrawable(topLayerIcon);
+        if (null != topIconDrawable) {
+            topIconDrawable.setBounds(0, 0, topIconDrawable.getMinimumWidth(), topIconDrawable.getMinimumHeight());
+            topDescView.setCompoundDrawables(topIconDrawable, null, null, null);
+        }
+        topLayerParent.addView(topDescView);
         addView(topLayerParent);
     }
 
@@ -255,21 +234,9 @@ public class ATScrollDeleteView extends RelativeLayout {
         private static final int FOLD = 12;
     }
 
-    public void setScrollDeleteDesc(String... descs) {
-        this.mDesc = descs;
+    public void setScrollDeleteDesc(String desc) {
+        this.desc = desc;
     }
-
-    private TextView createTextView(String desc, int textSize, int textColor, int topMargin) {
-        TextView topDescView = new TextView(getContext());
-        topDescView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
-        topDescView.setTextColor(textColor);
-        topDescView.setText(desc);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        lp.topMargin = topMargin;
-        topDescView.setLayoutParams(lp);
-        return topDescView;
-    }
-
 
     public interface OnScrollDeleteListener {
         void deleteAction();
@@ -282,21 +249,8 @@ public class ATScrollDeleteView extends RelativeLayout {
     @Override
     public void onWindowFocusChanged(boolean hasWindowFocus) {
         super.onWindowFocusChanged(hasWindowFocus);
-        if (null != descParent) {
-            descParent.removeAllViews();
-        }
-        if (null != mDesc && mDesc.length > 0) {
-            int length = mDesc.length;
-            for (int i = 0; i < length; i++) {
-                String currentDesc = mDesc[i];
-                TextView currentTextView;
-                if (0 == i) {
-                    currentTextView = createTextView(currentDesc, topLayerDescSize, topLayerDescColor, 0);
-                } else {
-                    currentTextView = createTextView(currentDesc, topLayerDescAnotherSize, topLayerDescAnotherColor, topLayerDescMargin);
-                }
-                descParent.addView(currentTextView);
-            }
+        if (null != topDescView) {
+            topDescView.setText(desc);
         }
         if (null != underIconView) {
             underIconView.setOnClickListener(new OnClickListener() {
