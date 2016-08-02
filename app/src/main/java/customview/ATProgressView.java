@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.graphics.SweepGradient;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -71,6 +72,7 @@ public class ATProgressView extends View {
     private String progressDesc;
     private float drgeePercent;
     private int countdownTime;
+    private int[] doughnutColors;
 
     public ATProgressView(Context context) {
         this(context, null);
@@ -177,6 +179,13 @@ public class ATProgressView extends View {
         mMiddleLayerSize = viewSize * MIDDLE_LAYER_LARGE_SCALE;
         mShadowLayerSize = viewSize * SHADOW_LAYER_LARGE_SCALE;
 
+        doughnutColors = new int[]{midlleLayerProgressColor,
+                getResources().getColor(R.color.colorPrimary),
+                getResources().getColor(R.color.colorAccent),
+                getResources().getColor(R.color.textHighLightColor),
+                getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_purple)};
+
     }
 
     @Override
@@ -237,6 +246,7 @@ public class ATProgressView extends View {
 
         canvas.drawCircle(circleCenterPoint.x, circleCenterPoint.y, mMiddleLayerSize / 2 - midlleLayerProgressWidth, progressBgPaint);
         // 注意扫过的扇形的范围(进度)要和绘制的小圆点保持一致,所以我们需要从-90度开始
+        progressPaint.setShader(new SweepGradient(0, 0, doughnutColors, null));
         canvas.drawArc(oval, -90, 360 * drgeePercent, false, progressPaint);
 
         // 由于前面绘制了一个小圆,所以我们弧度的角度不能用于计算圆的坐标,我们需要大概的加上那么一两度来计算,
