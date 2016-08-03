@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
-              android:orientation="vertical"
-              app:layout_behavior="@string/appbar_scrolling_view_behavior"
-              tools:context="com.atloginbutton.MainActivity"
-              tools:showIn="@layout/activity_main">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.atloginbutton.MainActivity"
+    tools:showIn="@layout/activity_main">
 
     <RelativeLayout
         android:id="@+id/rl_change"
@@ -23,7 +23,7 @@
             android:id="@+id/atb_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true" />
 
 
     </RelativeLayout>
@@ -52,69 +52,85 @@
             app:login_text="登录"
             app:text_color="#90000000"
             app:text_normal_color="@android:color/white"
-            app:text_size="16sp"/>
+            app:text_size="16sp" />
 
 
     </RelativeLayout>
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:layout_weight="2"
-        android:orientation="vertical"
-        android:visibility="visible">
+        android:layout_weight="2">
 
 
-        <customview.ATScrollDeleteView
-            android:id="@+id/deleteScroll_4"
+        <LinearLayout
+            android:id="@+id/ll_test"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="2dp"
-            app:top_layer_color="@android:color/holo_blue_bright"
-            app:top_layer_desc_size="12"
-            app:top_layer_icon_margin_desc="12dp"
-            app:under_layer_color="@android:color/holo_green_light">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
 
-        </customview.ATScrollDeleteView>
 
-        <customview.ATScrollDeleteView
-            android:id="@+id/deleteScroll"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="2dp"
-            app:top_layer_desc_size="12"
-            app:top_layer_icon_margin_desc="12dp">
+            <!--<customview.ATScrollDeleteView-->
+            <!--android:visibility="gone"-->
+            <!--android:id="@+id/deleteScroll_4"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="90dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--app:top_layer_color="@android:color/holo_blue_bright"-->
+            <!--app:top_layer_desc_size="12"-->
+            <!--app:top_layer_icon_margin_desc="12dp"-->
+            <!--app:under_layer_color="@android:color/holo_green_light">-->
 
-        </customview.ATScrollDeleteView>
+            <!--</customview.ATScrollDeleteView>-->
 
-        <customview.ATScrollDeleteView
-            android:id="@+id/deleteScroll_1"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="2dp"
-            app:top_layer_color="@android:color/holo_green_light"
-            app:top_layer_desc_size="12"
-            app:top_layer_icon_margin_desc="12dp"
-            app:under_layer_color="@android:color/holo_purple">
+            <!--<customview.ATScrollDeleteView-->
+            <!--android:visibility="gone"-->
+            <!--android:id="@+id/deleteScroll"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="65dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--app:top_layer_desc_size="12"-->
+            <!--app:top_layer_icon_margin_desc="12dp">-->
 
-        </customview.ATScrollDeleteView>
+            <!--</customview.ATScrollDeleteView>-->
 
-    </LinearLayout>
+            <!--<customview.ATScrollDeleteView-->
+            <!--android:visibility="gone"-->
+            <!--android:id="@+id/deleteScroll_1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="65dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginTop="2dp"-->
+            <!--app:top_layer_color="@android:color/holo_green_light"-->
+            <!--app:top_layer_desc_size="12"-->
+            <!--app:top_layer_icon_margin_desc="12dp"-->
+            <!--app:under_layer_color="@android:color/holo_purple">-->
+
+            <!--</customview.ATScrollDeleteView>-->
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
     <customview.ATProgressView
-        android:visibility="visible"
         android:id="@+id/progressView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:visibility="visible"
 
         />
+
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent" />
 
 
 </LinearLayout>

@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -23,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private ATLoginButton mATLoginButton3;
 
     private ATProgressView mATProgressView;
+    private LinearLayout linearLayout;
+//    private ATScrollDeleteView test;
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button = (Button) findViewById(R.id.btn_test);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final ATScrollDeleteView   test = new ATScrollDeleteView(MainActivity.this);
+                LinearLayout.LayoutParams lp4 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
+                test.setLayoutParams(lp4);
+                test.setScrollDeleteDesc("陈冠希4", "身份证号: 130491190008244523");
+                linearLayout.addView(test);
+
+                test.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
+                    @Override
+                    public void deleteAction() {
+                        Toast.makeText(MainActivity.this,"点击了-->>握草",Toast.LENGTH_SHORT).show();
+                        linearLayout.removeView(test);
+                    }
+                });
+            }
+        });
         mATProgressView = (ATProgressView) findViewById(R.id.progressView);
         mATProgressView.setCountdownTime(10);
         mATProgressView.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-
+        linearLayout = (LinearLayout) findViewById(R.id.ll_test);
         mATLoginButton1 = (ATLoginButton) findViewById(R.id.atb_1);
 //        mATLoginButton2 = (ATLoginButton) findViewById(R.id.atb_2);
         mATLoginButton3 = (ATLoginButton) findViewById(R.id.atb_3);
@@ -91,31 +115,59 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        ATScrollDeleteView atScrollDeleteView = (ATScrollDeleteView) findViewById(R.id.deleteScroll);
-        atScrollDeleteView.setScrollDeleteDesc("陈冠希","阿娇");
-        atScrollDeleteView.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
-            @Override
-            public void deleteAction() {
-                Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();
-            }
-        });
-        ATScrollDeleteView atScrollDeleteView1 = (ATScrollDeleteView) findViewById(R.id.deleteScroll_1);
-        atScrollDeleteView1.setScrollDeleteDesc("张柏芝");
-        atScrollDeleteView1.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
-            @Override
-            public void deleteAction() {
-                Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        test = new ATScrollDeleteView(this);
+//        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
+//        test.setLayoutParams(lp);
+//        test.setScrollDeleteDesc("陈冠希", "身份证号: 130491190008244523");
+//        linearLayout.addView(test);
 
-        ATScrollDeleteView atScrollDeleteView4 = (ATScrollDeleteView) findViewById(R.id.deleteScroll_4);
-        atScrollDeleteView4.setScrollDeleteDesc("陈思慧","陈冠希","阿娇");
-        atScrollDeleteView4.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
-            @Override
-            public void deleteAction() {
-                Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        test = new ATScrollDeleteView(this);
+//        LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
+//        test.setLayoutParams(lp1);
+//        test.setScrollDeleteDesc("陈冠希1", "身份证号: 130491190008244523");
+//        linearLayout.addView(test);
+//
+//
+//        test = new ATScrollDeleteView(this);
+//        LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
+//        test.setLayoutParams(lp2);
+//        test.setScrollDeleteDesc("陈冠希2", "身份证号: 130491190008244523");
+//        linearLayout.addView(test);
+//
+//
+//        test = new ATScrollDeleteView(this);
+//        LinearLayout.LayoutParams lp3 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
+//        test.setLayoutParams(lp3);
+//        test.setScrollDeleteDesc("陈冠希3", "身份证号: 130491190008244523");
+//        linearLayout.addView(test);
+
+
+
+//        ATScrollDeleteView atScrollDeleteView = (ATScrollDeleteView) findViewById(R.id.deleteScroll);
+//        atScrollDeleteView.setScrollDeleteDesc("陈冠希", "身份证号: 130491190008244523");
+//        atScrollDeleteView.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
+//            @Override
+//            public void deleteAction() {
+//                Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        ATScrollDeleteView atScrollDeleteView1 = (ATScrollDeleteView) findViewById(R.id.deleteScroll_1);
+//        atScrollDeleteView1.setScrollDeleteDesc("张曼玉");
+//        atScrollDeleteView1.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
+//            @Override
+//            public void deleteAction() {
+//                Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        ATScrollDeleteView atScrollDeleteView4 = (ATScrollDeleteView) findViewById(R.id.deleteScroll_4);
+//        atScrollDeleteView4.setScrollDeleteDesc("陈思慧", "陈冠希", "阿娇");
+//        atScrollDeleteView4.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
+//            @Override
+//            public void deleteAction() {
+//                Toast.makeText(MainActivity.this, "执行删除动作-->", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
@@ -167,4 +219,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
