@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 
 import customview.ATLoginButton;
 import customview.ATProgressView;
-import customview.ATScrollDeleteView;
+import customview.ATScrollDeleteNewView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -49,13 +50,29 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final ATScrollDeleteView   test = new ATScrollDeleteView(MainActivity.this);
+//                final ATScrollDeleteView   test = new ATScrollDeleteView(MainActivity.this);
+//                LinearLayout.LayoutParams lp4 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
+//                test.setLayoutParams(lp4);
+//                test.setScrollDeleteDesc("陈冠希4", "身份证号: 130491190008244523");
+//                linearLayout.addView(test);
+//
+//                test.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
+//                    @Override
+//                    public void deleteAction() {
+//                        Toast.makeText(MainActivity.this,"点击了-->>握草",Toast.LENGTH_SHORT).show();
+//                        linearLayout.removeView(test);
+//                    }
+//                });
+
+
+
+                final ATScrollDeleteNewView test = new ATScrollDeleteNewView(MainActivity.this);
                 LinearLayout.LayoutParams lp4 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 200);
                 test.setLayoutParams(lp4);
-                test.setScrollDeleteDesc("陈冠希4", "身份证号: 130491190008244523");
+                test.setContentView(LayoutInflater.from(MainActivity.this).inflate(R.layout.view_test,null,false));
                 linearLayout.addView(test);
 
-                test.setScrollDeleteListener(new ATScrollDeleteView.OnScrollDeleteListener() {
+                test.setScrollDeleteListener(new ATScrollDeleteNewView.OnScrollDeleteListener() {
                     @Override
                     public void deleteAction() {
                         Toast.makeText(MainActivity.this,"点击了-->>握草",Toast.LENGTH_SHORT).show();

@@ -12,17 +12,14 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.atloginbutton.R;
-import com.orhanobut.logger.Logger;
 
 import java.lang.ref.WeakReference;
 
@@ -30,18 +27,12 @@ import java.lang.ref.WeakReference;
 /**
  * Created by jsion on 16/7/27.
  */
-public class ATScrollDeleteView extends RelativeLayout {
+public class ATScrollDeleteNewView extends RelativeLayout {
     private static final float TOUCH_SCROLL_SCALE = 1 / 5.F;
     private static final int ANIMATION_TIME = 300;
     private static final int READY_SET_DATA = 111;
     private int topLayerColor;
     private int topLayerIcon;
-    private String topLayerDesc;
-    private int topLayerDescColor;
-    private int topLayerDescAnotherSize;
-    private int topLayerDescAnotherColor;
-    private int topLayerDescSize;
-    private int topLayerDescMargin;
     private int topLayerIconMarginDesc;
     private int topLayerIconMarginLeft;
     private int underLayerColor;
@@ -58,16 +49,17 @@ public class ATScrollDeleteView extends RelativeLayout {
     private LinearLayout descParent;
     private ImageView topIconView;
     private WeakRefHander weakRefHander;
+    private View mContentView;
 
-    public ATScrollDeleteView(Context context) {
+    public ATScrollDeleteNewView(Context context) {
         this(context, null);
     }
 
-    public ATScrollDeleteView(Context context, AttributeSet attrs) {
+    public ATScrollDeleteNewView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ATScrollDeleteView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ATScrollDeleteNewView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.ATScrollDeleteView, defStyleAttr, R.style.def_scroll_delete_style);
         int indexCount = typedArray.getIndexCount();
@@ -80,29 +72,11 @@ public class ATScrollDeleteView extends RelativeLayout {
                 case R.styleable.ATScrollDeleteView_top_layer_icon:
                     topLayerIcon = typedArray.getResourceId(attr, 0);
                     break;
-                case R.styleable.ATScrollDeleteView_top_layer_desc:
-                    topLayerDesc = typedArray.getString(attr);
-                    break;
-                case R.styleable.ATScrollDeleteView_top_layer_desc_color:
-                    topLayerDescColor = typedArray.getColor(attr, Color.BLACK);
-                    break;
-                case R.styleable.ATScrollDeleteView_top_layer_desc_size:
-                    topLayerDescSize = typedArray.getInteger(attr, 0);
-                    break;
-                case R.styleable.ATScrollDeleteView_top_layer_desc_another_color:
-                    topLayerDescAnotherColor = typedArray.getColor(attr, Color.BLACK);
-                    break;
-                case R.styleable.ATScrollDeleteView_top_layer_desc_another_size:
-                    topLayerDescAnotherSize = typedArray.getInteger(attr, 0);
-                    break;
                 case R.styleable.ATScrollDeleteView_top_layer_icon_margin_left:
                     topLayerIconMarginLeft = typedArray.getDimensionPixelOffset(attr, 0);
                     break;
                 case R.styleable.ATScrollDeleteView_top_layer_icon_margin_desc:
                     topLayerIconMarginDesc = typedArray.getDimensionPixelOffset(attr, 0);
-                    break;
-                case R.styleable.ATScrollDeleteView_top_layer_desc_margin:
-                    topLayerDescMargin = typedArray.getDimensionPixelOffset(attr, 0);
                     break;
                 case R.styleable.ATScrollDeleteView_under_layer_color:
                     underLayerColor = typedArray.getColor(attr, Color.BLACK);
@@ -264,20 +238,20 @@ public class ATScrollDeleteView extends RelativeLayout {
         private static final int FOLD = 12;
     }
 
-    public void setScrollDeleteDesc(String... descs) {
-        Logger.e("--->>descParent" + descParent);
-        this.mDesc = descs;
-    }
 
-    private static TextView createTextView(ATScrollDeleteView scrollDeleteView, String desc, int textSize, int textColor, int topMargin) {
-        TextView topDescView = new TextView(scrollDeleteView.getContext());
-        topDescView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
-        topDescView.setTextColor(textColor);
-        topDescView.setText(desc);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        lp.topMargin = topMargin;
-        topDescView.setLayoutParams(lp);
-        return topDescView;
+    public void setContentView(View contentView) {
+        this.mContentView = contentView;
+        if (null != contentView) {
+            contentView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (ViewState.FOLD == viewState) {
+                        return;
+                    }
+                    viewFoldOrNot();
+                }
+            });
+        }
     }
 
 
@@ -290,35 +264,22 @@ public class ATScrollDeleteView extends RelativeLayout {
     }
 
     private static class WeakRefHander extends Handler {
-        WeakReference<ATScrollDeleteView> mHomeFragmentWeakReference;
+        WeakReference<ATScrollDeleteNewView> mHomeFragmentWeakReference;
 
-        WeakRefHander(ATScrollDeleteView atHomeFragment) {
-            mHomeFragmentWeakReference = new WeakReference<ATScrollDeleteView>(atHomeFragment);
+        WeakRefHander(ATScrollDeleteNewView atHomeFragment) {
+            mHomeFragmentWeakReference = new WeakReference<ATScrollDeleteNewView>(atHomeFragment);
         }
 
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            final ATScrollDeleteView atHomeFragment = mHomeFragmentWeakReference.get();
+            final ATScrollDeleteNewView atHomeFragment = mHomeFragmentWeakReference.get();
             if (atHomeFragment != null) {
                 switch (msg.what) {
                     case READY_SET_DATA:
                         if (null != atHomeFragment.descParent) {
                             atHomeFragment.descParent.removeAllViews();
-                            if (null != atHomeFragment.mDesc && atHomeFragment.mDesc.length > 0) {
-                                int length = atHomeFragment.mDesc.length;
-                                for (int i = 0; i < length; i++) {
-                                    String currentDesc = atHomeFragment.mDesc[i];
-                                    TextView currentTextView;
-                                    if (0 == i) {
-                                        currentTextView = createTextView(atHomeFragment, currentDesc, atHomeFragment.topLayerDescSize, atHomeFragment.topLayerDescColor, 0);
-                                    } else {
-                                        currentTextView = createTextView(atHomeFragment, currentDesc, atHomeFragment.topLayerDescAnotherSize, atHomeFragment.topLayerDescAnotherColor, atHomeFragment.topLayerDescMargin);
-
-                                    }
-                                    atHomeFragment.descParent.addView(currentTextView);
-                                }
-                            }
+                            atHomeFragment.descParent.addView(atHomeFragment.mContentView);
                         }
                         if (null != atHomeFragment.underIconView) {
                             atHomeFragment.underIconView.setOnClickListener(new OnClickListener() {
