@@ -1,63 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ATLoginButton">
-        <attr name="button_color" format="color"/>
-        <attr name="text_color" format="color"/>
-        <attr name="circle_loading_color" format="color"/>
-        <attr name="failed_button_color" format="color"/>
-        <attr name="text_size" format="dimension"/>
-        <attr name="circle_loading_width" format="dimension"/>
-        <attr name="login_text" format="string"/>
-        <attr name="failed_text" format="string"/>
-        <attr name="failed_text_color" format="color"/>
-        <attr name="button_normal_color" format="color"/>
-        <attr name="button_normal_stroke_color" format="color"/>
-        <attr name="text_normal_color" format="color"/>
-        <attr name="button_normal_stroke_width" format="dimension"/>
+        <attr name="button_color" format="color" />
+        <attr name="text_color" format="color" />
+        <attr name="circle_loading_color" format="color" />
+        <attr name="failed_button_color" format="color" />
+        <attr name="text_size" format="dimension" />
+        <attr name="circle_loading_width" format="dimension" />
+        <attr name="login_text" format="string" />
+        <attr name="failed_text" format="string" />
+        <attr name="failed_text_color" format="color" />
+        <attr name="button_normal_color" format="color" />
+        <attr name="button_normal_stroke_color" format="color" />
+        <attr name="text_normal_color" format="color" />
+        <attr name="button_normal_stroke_width" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="ATCardItemView">
-        <attr name="cardColor" format="color"/>
-        <attr name="cardStrockColor" format="color"/>
-        <attr name="textHighLightColor" format="color"/>
-        <attr name="textNormalColor" format="color"/>
-        <attr name="triangleColor" format="color"/>
-        <attr name="triangleFlagColor" format="color"/>
-        <attr name="dashLineColor" format="color"/>
-        <attr name="cardRoundSize" format="dimension"/>
-        <attr name="strockSize" format="dimension"/>
+        <attr name="cardColor" format="color" />
+        <attr name="cardStrockColor" format="color" />
+        <attr name="textHighLightColor" format="color" />
+        <attr name="textNormalColor" format="color" />
+        <attr name="triangleColor" format="color" />
+        <attr name="triangleFlagColor" format="color" />
+        <attr name="dashLineColor" format="color" />
+        <attr name="cardRoundSize" format="dimension" />
+        <attr name="strockSize" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="ATScrollDeleteView">
-        <attr name="top_layer_color" format="color"/>
-        <attr name="top_layer_icon" format="reference"/>
-        <attr name="top_layer_desc" format="string"/>
-        <attr name="top_layer_desc_color" format="color"/>
-        <attr name="top_layer_desc_size" format="integer"/>
-        <attr name="top_layer_desc_another_color" format="color"/>
-        <attr name="top_layer_desc_another_size" format="integer"/>
-        <attr name="top_layer_desc_margin" format="dimension"/>
-        <attr name="top_layer_icon_margin_desc" format="dimension"/>
-        <attr name="top_layer_icon_margin_left" format="dimension"/>
-        <attr name="under_layer_color" format="color"/>
-        <attr name="under_layer_icon" format="reference"/>
+        <attr name="top_layer_color" format="color" />
+        <attr name="top_layer_icon" format="reference" />
+        <attr name="top_layer_desc" format="string" />
+        <attr name="top_layer_desc_color" format="color" />
+        <attr name="top_layer_desc_size" format="integer" />
+        <attr name="top_layer_desc_another_color" format="color" />
+        <attr name="top_layer_desc_another_size" format="integer" />
+        <attr name="top_layer_desc_margin" format="dimension" />
+        <attr name="top_layer_icon_margin_desc" format="dimension" />
+        <attr name="top_layer_icon_margin_left" format="dimension" />
+        <attr name="under_layer_color" format="color" />
+        <attr name="under_layer_icon" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="ATProgressView">
-        <attr name="outer_layer_solide_color" format="color"/>
-        <attr name="outer_layer_stroke_color" format="color"/>
-        <attr name="outer_layer_stroke_width" format="dimension"/>
-        <attr name="midlle_layer_bg_color" format="color"/>
-        <attr name="midlle_layer_progress_color" format="color"/>
-        <attr name="midlle_layer_progress_width" format="dimension"/>
-        <attr name="midlle_layer_small_circle_solide_color" format="color"/>
-        <attr name="midlle_layer_small_circle_stroke_color" format="color"/>
-        <attr name="midlle_layer_small_circle_size" format="dimension"/>
-        <attr name="midlle_layer_small_circle_stroke_width" format="dimension"/>
-        <attr name="shadow_layer_color" format="color"/>
-        <attr name="shadow_layer_inner_color" format="color"/>
-        <attr name="inner_text_size" format="dimension"/>
-        <attr name="inner_text_color" format="color"/>
+        <attr name="outer_layer_solide_color" format="color" />
+        <attr name="outer_layer_stroke_color" format="color" />
+        <attr name="outer_layer_stroke_width" format="dimension" />
+        <attr name="midlle_layer_bg_color" format="color" />
+        <attr name="midlle_layer_progress_color" format="color" />
+        <attr name="midlle_layer_progress_width" format="dimension" />
+        <attr name="midlle_layer_small_circle_solide_color" format="color" />
+        <attr name="midlle_layer_small_circle_stroke_color" format="color" />
+        <attr name="midlle_layer_small_circle_size" format="dimension" />
+        <attr name="midlle_layer_small_circle_stroke_width" format="dimension" />
+        <attr name="shadow_layer_color" format="color" />
+        <attr name="shadow_layer_inner_color" format="color" />
+        <attr name="inner_text_size" format="dimension" />
+        <attr name="inner_text_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ColorBallView">
+        <attr name="ballSize" format="dimension" />
+        <attr name="firstBallColor" format="color" />
+        <attr name="secondColor" format="color" />
+        <attr name="thirdBallColor" format="color" />
+
     </declare-styleable>
 
 </resources>
