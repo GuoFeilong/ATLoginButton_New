@@ -72,46 +72,6 @@
             android:visibility="visible">
 
 
-            <!--<customview.ATScrollDeleteView-->
-            <!--android:visibility="gone"-->
-            <!--android:id="@+id/deleteScroll_4"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="90dp"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginTop="2dp"-->
-            <!--app:top_layer_color="@android:color/holo_blue_bright"-->
-            <!--app:top_layer_desc_size="12"-->
-            <!--app:top_layer_icon_margin_desc="12dp"-->
-            <!--app:under_layer_color="@android:color/holo_green_light">-->
-
-            <!--</customview.ATScrollDeleteView>-->
-
-            <!--<customview.ATScrollDeleteView-->
-            <!--android:visibility="gone"-->
-            <!--android:id="@+id/deleteScroll"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="65dp"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginTop="2dp"-->
-            <!--app:top_layer_desc_size="12"-->
-            <!--app:top_layer_icon_margin_desc="12dp">-->
-
-            <!--</customview.ATScrollDeleteView>-->
-
-            <!--<customview.ATScrollDeleteView-->
-            <!--android:visibility="gone"-->
-            <!--android:id="@+id/deleteScroll_1"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="65dp"-->
-            <!--android:layout_centerHorizontal="true"-->
-            <!--android:layout_marginTop="2dp"-->
-            <!--app:top_layer_color="@android:color/holo_green_light"-->
-            <!--app:top_layer_desc_size="12"-->
-            <!--app:top_layer_icon_margin_desc="12dp"-->
-            <!--app:under_layer_color="@android:color/holo_purple">-->
-
-            <!--</customview.ATScrollDeleteView>-->
-
         </LinearLayout>
 
     </ScrollView>
@@ -129,6 +89,10 @@
     <Button
         android:id="@+id/btn_test"
         android:layout_width="100dp"
+        android:text="增加View"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="@color/textHighLightColor"
         android:layout_height="50dp"
         android:background="@color/colorAccent" />
 
